@@ -9,10 +9,9 @@ class TweetsRepository {
     });
   }
 
-  list() {
+  list(min, max) {
     return new Promise((resolve) => {
-      const tweetsList = tweets.reverse().slice(0, 10);
-
+      const tweetsList = [...tweets].reverse().slice(min, max);
       const lastTweets = tweetsList.map((userTweet) => {
         const selectedUser = users.find((user) => user.username === userTweet.username);
         return {

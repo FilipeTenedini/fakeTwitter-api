@@ -24,9 +24,19 @@ class TweetController {
   }
 
   async index(req, res) {
-    const { page } = req.query;
+    let { page } = req.query;
+    let MIN = 0;
+    let MAX = 10;
+    if (page) {
+      page = Number(page);
 
-    const tweetsList = await TweetsRepository.list();
+      if (page < 1) return res.status(400).send('Informe uma página válida!');
+
+      MIN = page * 10;
+      MAX = MIN + 10;
+    }
+
+    const tweetsList = await TweetsRepository.list(MIN, MAX);
 
     res.status(201).send(tweetsList);
   }
