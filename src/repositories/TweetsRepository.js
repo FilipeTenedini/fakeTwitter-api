@@ -2,9 +2,9 @@ import tweets from '../mock/tweetsMock.js';
 import users from '../mock/usersMock.js';
 
 class TweetsRepository {
-  create({ username, tweet }) {
+  create({ user, tweet }) {
     return new Promise((resolve) => {
-      tweets.push({ username, tweet });
+      tweets.push({ user, tweet });
       resolve();
     });
   }
@@ -13,7 +13,7 @@ class TweetsRepository {
     return new Promise((resolve) => {
       const tweetsList = [...tweets].reverse().slice(min, max);
       const lastTweets = tweetsList.map((userTweet) => {
-        const selectedUser = users.find((user) => user.username === userTweet.username);
+        const selectedUser = users.find((user) => user.username === userTweet.user);
         return {
           ...selectedUser,
           tweet: userTweet.tweet,
@@ -26,7 +26,15 @@ class TweetsRepository {
 
   listByUser(name) {
     return new Promise((resolve) => {
-      const userTweets = tweets.filter((tweet) => tweet.username === name && tweet);
+      const selectedTweets = tweets.filter((tweet) => tweet.user === name && tweet);
+      const userTweets = selectedTweets.map((userTweet) => {
+        const selectedUser = users.find((user) => user.username === userTweet.user);
+        return {
+          ...selectedUser,
+          tweet: userTweet.tweet,
+        };
+      });
+
       resolve(userTweets);
     });
   }

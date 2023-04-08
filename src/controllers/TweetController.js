@@ -19,8 +19,8 @@ class TweetController {
   }
 
   async show(req, res) {
-    const { user } = req.params;
-    const userTweets = await TweetsRepository.listByUser(user);
+    const { username } = req.params;
+    const userTweets = await TweetsRepository.listByUser(username);
     res.status(201).send(userTweets);
   }
 
