@@ -2,12 +2,6 @@ import TweetsRepository from '../repositories/TweetsRepository.js';
 import UsersRepository from '../repositories/UsersRepository.js';
 
 class TweetController {
-  async index(req, res) {
-    const tweetsList = await TweetsRepository.list();
-
-    res.status(201).send(tweetsList);
-  }
-
   async create(req, res) {
     const { username, tweet } = req.body;
 
@@ -21,6 +15,20 @@ class TweetController {
     await TweetsRepository.create({ username, tweet });
 
     res.status(201).send('OK');
+  }
+
+  async show(req, res) {
+    const { username } = req.params;
+    const userTweets = await TweetsRepository.listByUser(username);
+    res.status(201).send(userTweets);
+  }
+
+  async index(req, res) {
+    const { page } = req.query;
+
+    const tweetsList = await TweetsRepository.list();
+
+    res.status(201).send(tweetsList);
   }
 }
 
