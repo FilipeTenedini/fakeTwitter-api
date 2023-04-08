@@ -6,4 +6,6 @@ const router = Router();
 
 router.post('/sign-up', UserController.create);
 router.post('/tweets', TweetController.create);
+router.get('/tweets', TweetController.index);
+
 export default router;

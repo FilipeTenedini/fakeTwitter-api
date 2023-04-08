@@ -1,5 +1,4 @@
-// conexão com o mock.
-const users = [];
+import users from '../mock/usersMock.js';
 
 class UsersRepository {
   create({ username, avatar }) {
