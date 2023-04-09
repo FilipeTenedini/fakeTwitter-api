@@ -1,5 +1,4 @@
 ## Meu Primeiro projeto utilizando NodeJS
-### Você pode acessar a aplicação neste link:
   
 <br><br><br>
 
