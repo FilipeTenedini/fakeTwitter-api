@@ -92,7 +92,11 @@ POST /tweets
 GET /tweets
 </summary>
 
+- [ ]  Esse endpoint deverá passar a receber uma página identificada via query string, no formato `?page=1`.
 - [ ]  Retornar os 10 últimos tweets publicados
+- [ ]  Lembre-se de validar se o valor de `page` (query string) foi enviado e tem valor **maior ou igual a** **1.** Caso o valor não seja um número maior que 1, deverá responder com a mensagem “Informe uma página válida!” e com o status code 400 (BAD REQUEST).
+- [ ]  O parâmetro `page` continua opcional. Caso não seja enviado, deverá retornar últimos 10 tweets.
+
 ```json
 [
 	{
@@ -126,18 +130,6 @@ GET /tweets/USERNAME
 ]
 ```
 - [ ] Se não houver nenhum tweet deste usuário, retornar um array vazio.
-</details>
-
-<details>
-<summary>
-GET /tweets com paginação
-</summary>
-
-- [ ]  Esse endpoint deverá passar a receber uma página identificada via query string, no formato `?page=1`.
-- [ ]  Modifique o endpoint para retornar corretamente os tweets da “página” (`page`) atual.
-- [ ]  A primeira página corresponde aos últimos 10 tweets, a segunda do 11 ao 20, a terceira do 21 ao 30, etc.
-- [ ]  Lembre-se de validar se o valor de `page` (query string) foi enviado e tem valor **maior ou igual a** **1.** Caso o valor não seja um número maior que 1, deverá responder com a mensagem “Informe uma página válida!” e com o status code 400 (BAD REQUEST).
-- [ ]  O parâmetro `page` continua opcional. Caso não seja enviado, deverá comportar como no requisito original (200, retornando últimos 10 tweets).
 </details>
 
 <h1 id="Tecnologias">🚀 Tecnologias</h1>
