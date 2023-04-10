@@ -8,9 +8,9 @@ class UserController {
 
     if (typeof (username) !== 'string' || typeof (avatar) !== 'string') return res.status(400).send('Todos os campos são obrigatórios!');
 
-    // const userExist = await UserRepository.findUserByName(username);
+    const userExist = await UserRepository.findUserByName(username);
 
-    // if (userExist) return res.status(400).send('Este nome de usuário já está em uso.');
+    if (userExist) return res.status(400).send('Este nome de usuário já está em uso.');
 
     await UserRepository.create({ username, avatar });
 
