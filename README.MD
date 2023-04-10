@@ -146,6 +146,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Desenvolvimento back end
 - Praticando commonJS e ES6+ imports/exports styles.
 - Desenvolvimento de APIs
-  
-	
+- Singleton Pattern
+- Repository Pattern
 
